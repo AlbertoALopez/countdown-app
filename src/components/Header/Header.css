@@ -1,0 +1,14 @@
+.app-header {
+  height: 100px;
+  background-color: #303e4d;
+  text-align: left;
+}
+
+.app-header > p {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 30px;
+  vertical-align: middle;
+  color: white;
+}

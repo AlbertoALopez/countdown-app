@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SpeakerList from '../../components/SpeakerList/SpeakerList';
 import './SessionInfo.css';
 
 
-const speakerObject = {
-  0: {
-    fullName: 'Meow Meow',
+const speakersObject = [
+  {
+    fullName: 'Meow',
+    region: 'British Columbia',
+  },
+  {
+    fullName: 'Woof',
+    region: 'Atlantic',
+  },
+  {
+    fullName: 'Caw',
     region: 'Ontario',
-    timeWarning: 'amber',
   },
-  1: {
-    fullName: 'Woof Woof',
-    region: 'Saskatchewan',
-  },
-  2: {
-    fullName: 'Caw Caw',
-    region: 'British Coumbia',
-  },
-};
+];
 
 class SessionInfo extends Component { //eslint-disable-line
   render() {
     return (
       <div className="session-info-container">
-        <SpeakerList speakers={speakerObject} />
+        <SpeakerList speakers={speakersObject} />
       </div>
     );
   }
 }
+
+SessionInfo.propTypes = {
+  speakers: PropTypes.array.isRequired, //eslint-disable-line
+};
 
 export default SessionInfo;

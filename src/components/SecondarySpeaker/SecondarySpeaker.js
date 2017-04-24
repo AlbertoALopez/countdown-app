@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './SecondarySpeaker.css';
 
 const SecondarySpeaker = props => (
-  <div>
+  <div className="secondary-speaker">
     <p>{props.fullName}</p>
-    <span id="region-text">{props.region}</span>
+    <p className="secondary-region">{props.region}</p>
   </div>
 );
 

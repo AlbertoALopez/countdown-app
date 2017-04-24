@@ -4,12 +4,12 @@ import './Header.css';
 
 const Header = props => (
   <div className="app-header">
-    <p>{props.sessionName}</p>
+    <p>{props.activeSession}</p>
   </div>
 );
 
 Header.propTypes = {
-  sessionName: PropTypes.string.isRequired,
+  activeSession: PropTypes.string.isRequired,
 };
 
 export default Header;

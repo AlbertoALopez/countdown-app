@@ -1,0 +1,53 @@
+.primary-speaker-container {
+  padding-top: 40px;
+  margin-bottom: 20px;
+}
+
+.primary-speaker-container > p {
+  font-size: 60px;
+}
+
+#primary-speaker-region > p {
+  font-size: 40px;
+  color: grey;
+}
+
+.time-warning {
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   display: inline-block;
+}
+
+.green {
+  background: #5DCC2C;
+}
+
+.red {
+  background: #A6000C;
+}
+
+.amber {
+  background: #D48F19;
+}
+
+@-webkit-keyframes blink {
+  0%   { background:white; }
+  100% { background:red; }
+}
+
+@-moz-keyframes blink {
+  0%   { background:white; }
+  100% { background:red; }
+}
+
+@-ms-keyframes blink {
+  0%   { background: white; }
+  100% { background:red; }
+}
+
+.flashing-red {
+     -webkit-animation: blink 1s infinite;
+     -moz-animation:    blink 1s infinite;
+     -ms-animation:     blink 1s infinite;
+}

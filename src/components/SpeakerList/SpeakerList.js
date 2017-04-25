@@ -16,7 +16,7 @@ class SpeakerList extends Component { //eslint-disable-line
     return (
       <div>{this.props.speakers.map((speaker, index) => {
         if (index === 0) {
-          return <PrimarySpeaker key={Math.random()} fullName={speaker.fullName} region={speaker.region} secondsRemaining={31} />;
+          return <PrimarySpeaker key={Math.random()} fullName={speaker.fullName} region={speaker.region} secondsRemaining={210} />;
         }
 
         return <SecondarySpeaker key={Math.random()} fullName={speaker.fullName} region={speaker.region} />;

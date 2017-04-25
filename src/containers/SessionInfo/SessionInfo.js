@@ -4,26 +4,11 @@ import SpeakerList from '../../components/SpeakerList/SpeakerList';
 import './SessionInfo.css';
 
 
-const speakersObject = [
-  {
-    fullName: 'Meow',
-    region: 'British Columbia',
-  },
-  {
-    fullName: 'Woof',
-    region: 'Atlantic',
-  },
-  {
-    fullName: 'Caw',
-    region: 'Ontario',
-  },
-];
-
 class SessionInfo extends Component { //eslint-disable-line
   render() {
     return (
       <div className="session-info-container">
-        <SpeakerList speakers={speakersObject} />
+        <SpeakerList speakers={this.props.speakers} />
       </div>
     );
   }

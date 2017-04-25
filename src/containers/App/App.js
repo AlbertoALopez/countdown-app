@@ -15,6 +15,9 @@ class App extends Component {
       speakers: [],
       activeSession: false,
       sessionName: '',
+      speakerEndTime: 0,
+      totalSpeakingTime: 0,
+      warning: {},
     };
   }
 
@@ -22,21 +25,26 @@ class App extends Component {
     base.listenTo('Configuration', {
       context: this,
       then(configData) {
-        console.log(configData);
-
         this.setState({
           activeSession: configData.activeSessionId,
+          speakerEndTime: configData.speakerEndTime,
+          totalSpeakingTime: configData.totalSpeakingTime,
+          warning: {
+            amberWarningTime: configData.amberWarningTime,
+            flashingRedWarningTime: configData.flashingRedWarningTime,
+            redWarningTime: configData.redWarningTime,
+          },
         });
 
 
         if (configData.activeSessionId !== '' || !configData.activeSessionId) {
-          base.fetch(`Sessions/${configData.activeSessionId}/name`, {
+          base.fetch(`Sessions/${configData.activeSessionId}`, {
             context: this,
             asArray: false,
-            then(sessionName) {
-              console.log(sessionName);
+            then(session) {
+              console.log(session);
               this.setState({
-                sessionName,
+                sessionName: session.name,
               });
             },
           });
@@ -87,7 +95,12 @@ class App extends Component {
         {this.state.activeSession ?
           <div>
             <Header activeSession={this.state.sessionName} />
-            <SessionInfo speakers={this.state.speakers} />
+            <SessionInfo
+              warning={this.state.warning}
+              totalSpeakingTime={this.state.totalSpeakingTime}
+              speakers={this.state.speakers}
+              speakerEndTime={this.state.speakerEndTime}
+            />
           </div>
           :
           <OnHold />

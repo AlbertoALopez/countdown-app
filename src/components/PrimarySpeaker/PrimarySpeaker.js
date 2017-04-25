@@ -8,12 +8,13 @@ class PrimarySpeaker extends Component {
 
     this.state = {
       timer: null,
-      timeWarning: 'green',
+      timeWarning: '',
       secondsRemaining: 0,
     };
   }
 
   componentDidMount() {
+    console.log(this.props.secondsRemaining);
     this.setState({ //eslint-disable-line
       secondsRemaining: this.props.secondsRemaining,
     });
@@ -25,24 +26,31 @@ class PrimarySpeaker extends Component {
   }
 
   tick() {
-    console.log(this.state);
     this.setState({
       secondsRemaining: this.state.secondsRemaining - 1,
     });
 
-    if (this.state.secondsRemaining === 60) {
+    if (this.state.secondsRemaining > this.props.warning.amberWarningTime) {
+      this.setState({
+        timeWarning: 'green',
+      });
+    }
+
+    else if (this.state.secondsRemaining <= this.props.warning.amberWarningTime &&
+        this.state.secondsRemaining > this.props.warning.redWarningTime) {
       this.setState({
         timeWarning: 'amber',
       });
     }
 
-    else if (this.state.secondsRemaining === 30) {
+    else if (this.state.secondsRemaining <= this.props.warning.redWarningTime &&
+             this.state.secondsRemaining > this.props.warning.flashingRedWarningTime) {
       this.setState({
         timeWarning: 'red',
       });
     }
 
-    else if (this.state.secondsRemaining <= 0) {
+    else if (this.state.secondsRemaining <= this.props.warning.flashingRedWarningTime) {
       clearInterval(this.interval);
       this.setState({
         timeWarning: 'flashing-red',
@@ -65,6 +73,7 @@ PrimarySpeaker.propTypes = {
   fullName: PropTypes.string.isRequired,
   region: PropTypes.string.isRequired,
   secondsRemaining: PropTypes.number.isRequired,
+  warning: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default PrimarySpeaker;

@@ -6,17 +6,19 @@ import SecondarySpeaker from '../SecondarySpeaker/SecondarySpeaker';
 
 class SpeakerList extends Component { //eslint-disable-line
   render() {
-    // Object.keys(this.props.speakers.forEach((key) => {
-    //   console.log(key);
-    // }));
-    // console.log(this.props.speakers);
-    // this.props.speakers.forEach(() => {
-    //   console.log('kek');
-    // });
+    console.log(this.props.speakerEndTime - (Date.now() / 1000));
     return (
       <div>{this.props.speakers.map((speaker, index) => {
         if (index === 0) {
-          return <PrimarySpeaker key={Math.random()} fullName={speaker.fullName} region={speaker.region} secondsRemaining={210} />;
+          return (
+            <PrimarySpeaker
+              key={Math.random()}
+              fullName={speaker.fullName}
+              region={speaker.region}
+              secondsRemaining={this.props.speakerEndTime - (Date.now() / 1000)}
+              warning={this.props.warning}
+            />
+          );
         }
 
         return <SecondarySpeaker key={Math.random()} fullName={speaker.fullName} region={speaker.region} />;
@@ -27,6 +29,8 @@ class SpeakerList extends Component { //eslint-disable-line
 
 SpeakerList.propTypes = {
   speakers: PropTypes.array.isRequired, // eslint-disable-line
+  speakerEndTime: PropTypes.number.isRequired,
+  warning: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default SpeakerList;

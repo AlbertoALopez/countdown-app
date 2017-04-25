@@ -8,7 +8,12 @@ class SessionInfo extends Component { //eslint-disable-line
   render() {
     return (
       <div className="session-info-container">
-        <SpeakerList speakers={this.props.speakers} />
+        <SpeakerList
+          speakerEndTime={this.props.speakerEndTime}
+          speakers={this.props.speakers}
+          warning={this.props.warning}
+          totalSpeakingTime={this.props.totalSpeakingTime}
+        />
       </div>
     );
   }
@@ -16,6 +21,9 @@ class SessionInfo extends Component { //eslint-disable-line
 
 SessionInfo.propTypes = {
   speakers: PropTypes.array.isRequired, //eslint-disable-line
+  speakerEndTime: PropTypes.number.isRequired,
+  warning: PropTypes.object.isRequired, //eslint-disable-line
+  totalSpeakingTime: PropTypes.number.isRequired,
 };
 
 export default SessionInfo;

@@ -14,7 +14,6 @@ class PrimarySpeaker extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.secondsRemaining);
     this.setState({ //eslint-disable-line
       secondsRemaining: this.props.secondsRemaining,
     });

@@ -42,7 +42,6 @@ class App extends Component {
             context: this,
             asArray: false,
             then(session) {
-              console.log(session);
               this.setState({
                 sessionName: session.name,
               });

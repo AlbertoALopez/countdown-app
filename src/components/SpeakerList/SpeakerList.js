@@ -6,7 +6,6 @@ import SecondarySpeaker from '../SecondarySpeaker/SecondarySpeaker';
 
 class SpeakerList extends Component { //eslint-disable-line
   render() {
-    console.log(this.props.speakerEndTime - (Date.now() / 1000));
     return (
       <div>{this.props.speakers.map((speaker, index) => {
         if (index === 0) {
